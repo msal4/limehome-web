@@ -6,12 +6,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  type,
-  onClick,
-  disabled,
-}) => {
+export const Button: React.FC<ButtonProps> = ({ children, type, onClick, disabled }) => {
   return (
     <button
       disabled={disabled}

@@ -1,8 +1,4 @@
-import {
-  FocusEventHandler,
-  HTMLInputTypeAttribute,
-  MouseEventHandler,
-} from "react";
+import { FocusEventHandler, HTMLInputTypeAttribute, MouseEventHandler } from "react";
 
 interface InputProps {
   className?: string;
@@ -42,11 +38,9 @@ export const Input = ({
         {required ? <span className="ml-1 text-red-600">*</span> : null}
       </label>
       <div
-        className={`flex items-center mt-2 ${
-          !disabled ? "hover:bg-gray-100" : ""
-        } ${type !== "button" ? "focus-within:bg-white" : ""} ${
-          trailing ? "pr-4" : ""
-        }`}
+        className={`flex items-center mt-2 ${!disabled ? "hover:bg-gray-100" : ""} ${
+          type !== "button" ? "focus-within:bg-white" : ""
+        } ${trailing ? "pr-4" : ""}`}
         style={{ border: `1px solid ${error ? "#f87171" : "black"}` }}
         onClick={onClick}
       >
@@ -57,7 +51,7 @@ export const Input = ({
           className="py-4 px-6 bg-transparent font-light w-full text-left text-sm outline-none"
           value={value}
           placeholder={placeholder}
-          onChange={onChange && (e => onChange(e.target.value))}
+          onChange={onChange && ((e) => onChange(e.target.value))}
           onBlur={onBlur}
         />
         {trailing}

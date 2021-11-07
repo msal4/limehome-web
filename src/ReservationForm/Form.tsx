@@ -52,32 +52,17 @@ export const ReservationForm = () => {
           .finally(() => setSubmitting(false));
       }}
     >
-      {({
-        handleSubmit,
-        isSubmitting,
-        handleBlur,
-        handleChange,
-        values,
-        errors,
-        touched,
-      }) => {
+      {({ handleSubmit, isSubmitting, handleBlur, handleChange, values, errors, touched }) => {
         return (
           <form className="max-w-7xl mx-auto" onSubmit={handleSubmit}>
             <Header>Book your suite at limehome</Header>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <RangeDatePickerInput
                 label="Check-in/out dates"
-                value={[
-                  dayjs(values.checkInDate).toDate(),
-                  dayjs(values.checkOutDate).toDate(),
-                ]}
+                value={[dayjs(values.checkInDate).toDate(), dayjs(values.checkOutDate).toDate()]}
                 onChange={(startDate, endDate) => {
-                  handleChange("checkInDate")(
-                    dayjs(startDate).format(dateFormat)
-                  );
-                  handleChange("checkOutDate")(
-                    dayjs(endDate).format(dateFormat)
-                  );
+                  handleChange("checkInDate")(dayjs(startDate).format(dateFormat));
+                  handleChange("checkOutDate")(dayjs(endDate).format(dateFormat));
                 }}
                 disabled={isSubmitting}
               />
@@ -86,16 +71,12 @@ export const ReservationForm = () => {
                 value={values.numOfGuests.toString()}
                 placeholder="Number of guests"
                 onBlur={handleBlur("numOfGuests")}
-                onChange={v => {
+                onChange={(v) => {
                   const n = parseInt(v);
                   handleChange("numOfGuests")((isNaN(n) ? 1 : n).toString());
                 }}
                 disabled={isSubmitting}
-                error={
-                  errors.numOfGuests &&
-                  touched.numOfGuests &&
-                  errors.numOfGuests
-                }
+                error={errors.numOfGuests && touched.numOfGuests && errors.numOfGuests}
               />
               <Input
                 name="firstName"
@@ -105,9 +86,7 @@ export const ReservationForm = () => {
                 onBlur={handleBlur("firstName")}
                 onChange={handleChange("firstName")}
                 disabled={isSubmitting}
-                error={
-                  errors.firstName && touched.firstName && errors.firstName
-                }
+                error={errors.firstName && touched.firstName && errors.firstName}
               />
               <Input
                 name="lastName"
@@ -127,11 +106,7 @@ export const ReservationForm = () => {
                 onBlur={handleBlur("billingAddress")}
                 onChange={handleChange("billingAddress")}
                 disabled={isSubmitting}
-                error={
-                  errors.billingAddress &&
-                  touched.billingAddress &&
-                  errors.billingAddress
-                }
+                error={errors.billingAddress && touched.billingAddress && errors.billingAddress}
               />
               <SelectorInput
                 label="Billing Country"
@@ -140,11 +115,7 @@ export const ReservationForm = () => {
                 items={countries}
                 onChange={handleChange("billingCountry")}
                 disabled={isSubmitting}
-                error={
-                  errors.billingCountry &&
-                  touched.billingCountry &&
-                  errors.billingCountry
-                }
+                error={errors.billingCountry && touched.billingCountry && errors.billingCountry}
               />
               <Input
                 name="postalCode"
@@ -154,9 +125,7 @@ export const ReservationForm = () => {
                 onBlur={handleBlur("postalCode")}
                 onChange={handleChange("postalCode")}
                 disabled={isSubmitting}
-                error={
-                  errors.postalCode && touched.postalCode && errors.postalCode
-                }
+                error={errors.postalCode && touched.postalCode && errors.postalCode}
               />
               <Input
                 name="city"
@@ -214,9 +183,8 @@ const schema = yup.object().shape({
     .string()
     .required()
     .test({
-      test: v => /^\+(?:[0-9] ?){6,14}[0-9]$/.test(v ?? ""),
-      message:
-        "Phone number must be a valid phone number that includes the country code",
+      test: (v) => /^\+(?:[0-9] ?){6,14}[0-9]$/.test(v ?? ""),
+      message: "Phone number must be a valid phone number that includes the country code",
     })
     .label("Phone"),
 });
