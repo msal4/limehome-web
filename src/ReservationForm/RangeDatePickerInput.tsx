@@ -61,9 +61,7 @@ export const RangeDatePickerInput = ({
                 startDate: tomorrow.toDate(),
                 endDate: tomorrow.toDate(),
               }),
-              isSelected: ({ startDate, endDate }) =>
-                dayjs(startDate).isBefore(tomorrow.add(1, "minute")) &&
-                dayjs(endDate).isAfter(tomorrow.add(-1, "minute")),
+              isSelected: () => false,
               label: "Tomorrow",
             },
           ]}
