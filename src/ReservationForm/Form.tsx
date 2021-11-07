@@ -98,6 +98,7 @@ export const ReservationForm = () => {
                 }
               />
               <Input
+                name="firstName"
                 label="First Name"
                 value={values.firstName}
                 placeholder="First Name"
@@ -109,6 +110,7 @@ export const ReservationForm = () => {
                 }
               />
               <Input
+                name="lastName"
                 label="Last Name"
                 value={values.lastName}
                 placeholder="Last Name"
@@ -118,6 +120,7 @@ export const ReservationForm = () => {
                 error={errors.lastName && touched.lastName && errors.lastName}
               />
               <Input
+                name="billingAddress"
                 label="Billing Address"
                 value={values.billingAddress}
                 placeholder="Billing Address"
@@ -144,6 +147,7 @@ export const ReservationForm = () => {
                 }
               />
               <Input
+                name="postalCode"
                 label="Postal Code"
                 value={values.postalCode}
                 placeholder="Postal Code"
@@ -155,6 +159,7 @@ export const ReservationForm = () => {
                 }
               />
               <Input
+                name="city"
                 label="City"
                 value={values.city}
                 placeholder="City"
