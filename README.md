@@ -1,6 +1,11 @@
 # limehome web
 
 ## Run
+Install dependencies (prefer using yarn)
+```bash
+yarn
+```
+Start the app
 ```bash
 yarn start
 ```
